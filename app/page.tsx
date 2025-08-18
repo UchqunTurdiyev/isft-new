@@ -3,6 +3,7 @@
 import { useState, type FormEvent, type ChangeEvent } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+import AmoForm from './components/AmoForm'
 
 const normalizePhone = (v: string) => v.replace(/\D/g, '').slice(0, 12)
 
@@ -50,8 +51,6 @@ export default function Page() {
             <span className="font-semibold">ISFT Instituti</span>
           </div>
           <nav className="hidden md:flex items-center gap-6 text-sm text-zinc-600">
-            <a href="#about" className="hover:text-zinc-900">Institut</a>
-            <a href="#programs" className="hover:text-zinc-900">Yo‘nalishlar</a>
             <a href="#benefits" className="hover:text-zinc-900">Afzalliklar</a>
             <a href="#faq" className="hover:text-zinc-900">Savollar</a>
             <a href="#contact" className="hover:text-zinc-900">Aloqa</a>
@@ -65,7 +64,7 @@ export default function Page() {
         <div className="mx-auto max-w-6xl px-4 py-14 md:py-20 grid md:grid-cols-2 gap-10 items-center">
           <div>
             <h1 className="text-3xl md:text-5xl font-bold leading-tight tracking-tight">
-              4 yil – 2 diplom: O‘zbekistonda ham, chet elda ham tan olinadigan ta’lim
+            70+ davlatda tan olinadigan diplom. O‘zbekistonda ham, chet elda ham tan olinadigan ta’lim
             </h1>
             <p className="mt-4 text-zinc-600 text-base md:text-lg">
               Xalqaro akkreditatsiya (ECAQA), 70+ davlatda tan olinadigan diplom va kuchli amaliyotlar. Qabul ochiq — 1 daqiqada ariza qoldiring.
@@ -138,54 +137,55 @@ export default function Page() {
             {submitted ? (
               <p className="mt-4 text-green-700">Rahmat! Operatorlarimiz tez orada siz bilan bog‘lanadi.</p>
             ) : (
-              <form onSubmit={handleSubmit} className="mt-4 space-y-4">
-                <div>
-                  <label className="text-sm">F.I.Sh</label>
-                  <input
-                    required
-                    value={fullName}
-                    onChange={(e: ChangeEvent<HTMLInputElement>)=>setFullName(e.target.value)}
-                    className="mt-1 w-full rounded-xl border px-3 py-2 outline-none focus:ring-2 focus:ring-zinc-900"
-                    placeholder="Ism familiya"
-                  />
-                </div>
-                <div>
-                  <label className="text-sm">Telefon</label>
-                  <input
-                    required
-                    value={phone}
-                    onChange={(e: ChangeEvent<HTMLInputElement>)=>setPhone(normalizePhone(e.target.value))}
-                    className="mt-1 w-full rounded-xl border px-3 py-2 outline-none focus:ring-2 focus:ring-zinc-900"
-                    placeholder="99855xxxxxx"
-                    inputMode="numeric"
-                    pattern="[0-9]*"
-                  />
-                  <p className="mt-1 text-xs text-zinc-500">Format: 99855xxxxxx</p>
-                </div>
-                <div>
-                  <label className="text-sm">Yo‘nalish</label>
-                  <select
-                    value={program}
-                    onChange={(e: ChangeEvent<HTMLSelectElement>)=>setProgram(e.target.value)}
-                    className="mt-1 w-full rounded-xl border px-3 py-2"
-                  >
-                    <option value="">Tanlang</option>
-                    <option>Moliya boshqaruvi</option>
-                    <option>Raqamli texnologiyalar</option>
-                    <option>Biznes va menejment</option>
-                    <option>Boshqa</option>
-                  </select>
-                </div>
-                <button
-                  disabled={loading}
-                  className="w-full rounded-xl bg-zinc-900 px-5 py-3 text-white disabled:opacity-60"
-                >
-                  {loading ? 'Yuborilmoqda…' : 'Ariza topshirish'}
-                </button>
-                <p className="text-xs text-zinc-500">
-                  Yuborish orqali shaxsiy ma’lumotlarni qayta ishlashga rozilik bildirasiz.
-                </p>
-              </form>
+              <AmoForm />
+              // <form onSubmit={handleSubmit} className="mt-4 space-y-4">
+              //   <div>
+              //     <label className="text-sm">F.I.Sh</label>
+              //     <input
+              //       required
+              //       value={fullName}
+              //       onChange={(e: ChangeEvent<HTMLInputElement>)=>setFullName(e.target.value)}
+              //       className="mt-1 w-full rounded-xl border px-3 py-2 outline-none focus:ring-2 focus:ring-zinc-900"
+              //       placeholder="Ism familiya"
+              //     />
+              //   </div>
+              //   <div>
+              //     <label className="text-sm">Telefon</label>
+              //     <input
+              //       required
+              //       value={phone}
+              //       onChange={(e: ChangeEvent<HTMLInputElement>)=>setPhone(normalizePhone(e.target.value))}
+              //       className="mt-1 w-full rounded-xl border px-3 py-2 outline-none focus:ring-2 focus:ring-zinc-900"
+              //       placeholder="99855xxxxxx"
+              //       inputMode="numeric"
+              //       pattern="[0-9]*"
+              //     />
+              //     <p className="mt-1 text-xs text-zinc-500">Format: 99855xxxxxx</p>
+              //   </div>
+              //   <div>
+              //     <label className="text-sm">Yo‘nalish</label>
+              //     <select
+              //       value={program}
+              //       onChange={(e: ChangeEvent<HTMLSelectElement>)=>setProgram(e.target.value)}
+              //       className="mt-1 w-full rounded-xl border px-3 py-2"
+              //     >
+              //       <option value="">Tanlang</option>
+              //       <option>Moliya boshqaruvi</option>
+              //       <option>Raqamli texnologiyalar</option>
+              //       <option>Biznes va menejment</option>
+              //       <option>Boshqa</option>
+              //     </select>
+              //   </div>
+              //   <button
+              //     disabled={loading}
+              //     className="w-full rounded-xl bg-zinc-900 px-5 py-3 text-white disabled:opacity-60"
+              //   >
+              //     {loading ? 'Yuborilmoqda…' : 'Ariza topshirish'}
+              //   </button>
+              //   <p className="text-xs text-zinc-500">
+              //     Yuborish orqali shaxsiy ma’lumotlarni qayta ishlashga rozilik bildirasiz.
+              //   </p>
+              // </form>
             )}
           </div>
         </div>
@@ -245,15 +245,15 @@ export default function Page() {
               <a href="tel:+998555187070" className="underline">+998 55 518 70 70</a>
             </p>
             <div className="mt-6 flex gap-3">
-              <Link href="https://t.me/" className="rounded-xl border px-4 py-2">Telegram</Link>
-              <Link href="https://wa.me/998555187070" className="rounded-xl border px-4 py-2">WhatsApp</Link>
+              <Link href="https://t.me/samarqand_isft" className="rounded-xl border px-4 py-2">Telegram</Link>
+              <Link href="https://www.instagram.com/isft_samarqand" className="rounded-xl border px-4 py-2">Instagram</Link>
             </div>
           </div>
           <div className="rounded-3xl overflow-hidden border aspect-video">
             <iframe
               className="w-full h-full"
               loading="lazy"
-              src="https://www.google.com/maps?q=Samarqand%20Mirzo%20Bedil%2024&output=embed"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3071.1736011485486!2d66.9076939795546!3d39.66830930674267!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3f4d19c54a948e1b%3A0x9f085cadda5c85e5!2sISFT%20Instituti!5e0!3m2!1sru!2s!4v1741589692768!5m2!1sru!2s"
               title="ISFT manzil"
             />
           </div>

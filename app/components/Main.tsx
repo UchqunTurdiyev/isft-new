@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, type FormEvent, type ChangeEvent } from 'react';
+import AmoForm from './AmoForm';
 
 const normalizePhone = (v: string) => v.replace(/\D/g, '').slice(0, 12);
 
@@ -45,7 +46,7 @@ export default function Page() {
 
   return (
     <main className="min-h-dvh flex items-center justify-center p-6">
-      <form onSubmit={handleSubmit} className="w-full max-w-md space-y-4 border p-6 rounded-2xl">
+      {/* <form onSubmit={handleSubmit} className="w-full max-w-md space-y-4 border p-6 rounded-2xl">
         <div>
           <label className="text-sm">F.I.Sh</label>
           <input
@@ -96,7 +97,8 @@ export default function Page() {
         <p className="text-xs text-zinc-500">
           Yuborish orqali shaxsiy ma’lumotlarni qayta ishlashga rozilik bildirasiz.
         </p>
-      </form>
+      </form> */}
+      <AmoForm />
     </main>
   );
 }

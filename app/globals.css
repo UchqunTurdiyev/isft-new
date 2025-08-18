@@ -3,3 +3,14 @@
 @tailwind utilities;
 
 html, body { height: 100%; }
+
+
+/* Global CSS (masalan, globals.css) */
+iframe[src*="forms.amocrm.ru"] {
+    position: static !important;   /* fixed o‘rniga static */
+    inset: auto !important;
+    width: 100% !important;
+    max-width: 560px;              /* xohishga ko‘ra */
+    min-height: 480px;             /* xohishga ko‘ra */
+  }
+  

@@ -134,31 +134,33 @@ const handleSubmit = async (e) => {
             {submitted ? (
               <p className="mt-4 text-green-700">Rahmat! Operatorlarimiz tez orada siz bilan bog‘lanadi.</p>
             ) : (
-              <form onSubmit={handleSubmit} className="mt-4 space-y-4">
-                <div>
-                  <label className="text-sm">F.I.Sh</label>
-                  <input required value={fullName} onChange={(e)=>setFullName(e.target.value)} className="mt-1 w-full rounded-xl border px-3 py-2 outline-none focus:ring-2 focus:ring-zinc-900" placeholder="Ism familiya" />
-                </div>
-                <div>
-                  <label className="text-sm">Telefon</label>
-                  <input required value={phone} onChange={(e)=>setPhone(normalizePhone(e.target.value))} className="mt-1 w-full rounded-xl border px-3 py-2 outline-none focus:ring-2 focus:ring-zinc-900" placeholder="998551234567" inputMode="numeric" />
-                  <p className="mt-1 text-xs text-zinc-500">Format: 99855xxxxxx</p>
-                </div>
-                <div>
-                  <label className="text-sm">Yo‘nalish</label>
-                  <select value={program} onChange={(e)=>setProgram(e.target.value)} className="mt-1 w-full rounded-xl border px-3 py-2">
-                    <option value="">Tanlang</option>
-                    <option>Moliya boshqaruvi</option>
-                    <option>Raqamli texnologiyalar</option>
-                    <option>Biznes va menejment</option>
-                    <option>Boshqa</option>
-                  </select>
-                </div>
-                <button disabled={loading} className="w-full rounded-xl bg-zinc-900 px-5 py-3 text-white disabled:opacity-60">
-                  {loading ? 'Yuborilmoqda…' : 'Ariza topshirish'}
-                </button>
-                <p className="text-xs text-zinc-500">Yuborish orqali shaxsiy ma’lumotlarni qayta ishlashga rozilik bildirasiz.</p>
-              </form>
+
+                <AmoForm />
+            //   <form onSubmit={handleSubmit} className="mt-4 space-y-4">
+            //     <div>
+            //       <label className="text-sm">F.I.Sh</label>
+            //       <input required value={fullName} onChange={(e)=>setFullName(e.target.value)} className="mt-1 w-full rounded-xl border px-3 py-2 outline-none focus:ring-2 focus:ring-zinc-900" placeholder="Ism familiya" />
+            //     </div>
+            //     <div>
+            //       <label className="text-sm">Telefon</label>
+            //       <input required value={phone} onChange={(e)=>setPhone(normalizePhone(e.target.value))} className="mt-1 w-full rounded-xl border px-3 py-2 outline-none focus:ring-2 focus:ring-zinc-900" placeholder="998551234567" inputMode="numeric" />
+            //       <p className="mt-1 text-xs text-zinc-500">Format: 99855xxxxxx</p>
+            //     </div>
+            //     <div>
+            //       <label className="text-sm">Yo‘nalish</label>
+            //       <select value={program} onChange={(e)=>setProgram(e.target.value)} className="mt-1 w-full rounded-xl border px-3 py-2">
+            //         <option value="">Tanlang</option>
+            //         <option>Moliya boshqaruvi</option>
+            //         <option>Raqamli texnologiyalar</option>
+            //         <option>Biznes va menejment</option>
+            //         <option>Boshqa</option>
+            //       </select>
+            //     </div>
+            //     <button disabled={loading} className="w-full rounded-xl bg-zinc-900 px-5 py-3 text-white disabled:opacity-60">
+            //       {loading ? 'Yuborilmoqda…' : 'Ariza topshirish'}
+            //     </button>
+            //     <p className="text-xs text-zinc-500">Yuborish orqali shaxsiy ma’lumotlarni qayta ishlashga rozilik bildirasiz.</p>
+            //   </form>
             )}
           </div>
         </div>
