@@ -14,7 +14,7 @@ export default function ThanksIG() {
     // 500ms dan so‘ng Instagram’ga o‘tkazish
     const t = setTimeout(() => {
       // Profil manzilingiz:
-      window.location.href = "https://instagram.com/your_profile";
+      window.location.href = "https://instagram.com/isft_samarqand";
     }, 500);
     return () => clearTimeout(t);
   }, []);
