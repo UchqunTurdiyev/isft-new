@@ -1,28 +1,35 @@
-// app/thanks-ig/page.tsx
 "use client";
 import { useEffect } from "react";
 
+// Meta Pixel fbq uchun minimal, xavfsiz type
+type Fbq = (...args: unknown[]) => void;
+
+declare global {
+  interface Window {
+    fbq?: Fbq;
+  }
+}
+
 export default function ThanksIG() {
   useEffect(() => {
-    // Meta Pixel: Lead event (dedup uchun paramlar qo‘shsangiz ham bo‘ladi)
-    if (typeof window !== "undefined" && (window as any).fbq) {
-      (window as any).fbq("track", "Lead", {
-        source: "amocrm",
-        redirect: "instagram"
-      });
-    }
-    // 500ms dan so‘ng Instagram’ga o‘tkazish
-    const t = setTimeout(() => {
-      // Profil manzilingiz:
-      window.location.href = "https://instagram.com/isft_samarqand";
+    // Lead event
+    window.fbq?.("track", "Lead", {
+      source: "amocrm",
+      redirect: "instagram",
+    } as Record<string, unknown>);
+
+    // 500ms keyin Instagram'ga yo'naltirish
+    const t = window.setTimeout(() => {
+      window.location.href = "https://instagram.com/your_profile"; // <- profil linkingiz
     }, 500);
-    return () => clearTimeout(t);
+
+    return () => window.clearTimeout(t);
   }, []);
 
   return (
-    <main style={{padding:"48px 16px", textAlign:"center"}}>
+    <main style={{ padding: "48px 16px", textAlign: "center" }}>
       <h1>Rahmat!</h1>
-      <p>So‘rovingiz qabul qilindi. Sizni Instagram sahifamizga yo‘naltiryapmiz…</p>
+      <p>So‘rovingiz qabul qilindi. Instagram sahifamizga yo‘naltiryapmiz…</p>
     </main>
   );
 }
