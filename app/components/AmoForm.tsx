@@ -1,22 +1,28 @@
-"use client";
-import { useEffect } from "react";
-import Script from "next/script";
+'use client';
+
+import { useEffect } from 'react';
+import Script from 'next/script';
+
+// ✅ fbq global tipi (TS xatosini bartaraf etadi)
+declare global {
+  interface Window {
+    fbq?: (...args: any[]) => void;
+  }
+}
 
 export default function AmoForm() {
   useEffect(() => {
-    // iframe ko‘chirish
-    const container = document.getElementById("amoforms_container");
+    const container = document.getElementById('amoforms_container');
     if (!container) return;
 
+    // Iframe'ni topib konteynerga ko'chirish
     const move = () => {
-      const iframe = document.querySelector(
-        'iframe[src*="forms.amocrm.ru"]'
-      ) as HTMLIFrameElement | null;
+      const iframe = document.querySelector<HTMLIFrameElement>('iframe[src*="forms.amocrm.ru"]');
       if (iframe && !container.contains(iframe)) {
-        iframe.style.position = "static";
-        iframe.style.width = "100%";
-        iframe.style.maxWidth = "560px"; // xohishga ko‘ra
-        iframe.style.minHeight = "480px"; // xohishga ko‘ra
+        iframe.style.position = 'static';
+        iframe.style.width = '100%';
+        iframe.style.maxWidth = '560px';   // xohishga ko'ra
+        iframe.style.minHeight = '480px';  // xohishga ko'ra
         container.appendChild(iframe);
       }
     };
@@ -25,33 +31,27 @@ export default function AmoForm() {
     obs.observe(document.body, { childList: true, subtree: true });
     move();
 
-    // 🔹 Qo‘shimcha kuzatuv: forma yuborilganini aniqlash
+    // ⚠️ Eslatma: iframe ichini o‘qish cross-domain sababli odatda ruxsat etilmaydi.
+    // Agar Kommo (amoCRM) success holatida postMessage yuborsa, bu yerda tinglashingiz mumkin.
+    // Hozircha “inline success”ni aniqlashga urinib ko‘ramiz (ko‘p holatda catch bo‘ladi):
     const successObserver = new MutationObserver(() => {
-      const iframe = document.querySelector(
-        'iframe[src*="forms.amocrm.ru"]'
-      ) as HTMLIFrameElement | null;
+      const iframe = document.querySelector<HTMLIFrameElement>('iframe[src*="forms.amocrm.ru"]');
       if (!iframe) return;
-
       try {
-        const innerDoc =
-          iframe.contentDocument || iframe.contentWindow?.document;
-        if (
-          innerDoc &&
-          innerDoc.querySelector(".amoforms__success-message") // thank-you blok
-        ) {
-          // Meta Pixel Lead event
-          window.fbq?.("track", "Lead", { source: "amocrm" });
+        const innerDoc = iframe.contentDocument || iframe.contentWindow?.document;
+        if (innerDoc && innerDoc.querySelector('.amoforms__success-message')) {
+          // ✅ Meta Pixel Lead event (agar mavjud bo'lsa)
+          window.fbq?.('track', 'Lead', { source: 'amocrm' });
 
           // 0.5s keyin Instagram'ga yo‘naltirish
           setTimeout(() => {
-            window.location.href = "https://instagram.com/your_profile";
+            window.location.href = 'https://instagram.com/your_profile';
           }, 500);
         }
-      } catch (e) {
-        console.log("Cross-domain sababli forma ichini o‘qib bo‘lmadi");
+      } catch {
+        // Cross-domain — normal holat, e'tibor bermaymiz
       }
     });
-
     successObserver.observe(document.body, { childList: true, subtree: true });
 
     return () => {
@@ -62,12 +62,8 @@ export default function AmoForm() {
 
   return (
     <>
-      {/* Formani qo‘ymoqchi bo‘lgan joyingiz */}
-      <div
-        id="amoforms_container"
-        className="mx-auto"
-        style={{ minHeight: 480 }}
-      />
+      {/* Formani ko‘rsatmoqchi bo‘lgan joy */}
+      <div id="amoforms_container" className="mx-auto" style={{ minHeight: 480 }} />
 
       {/* amoCRM init */}
       <Script id="amo-form-init" strategy="afterInteractive">
