@@ -4,6 +4,7 @@ import { useState, type FormEvent, type ChangeEvent } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import AmoForm from './components/AmoForm'
+import LicenseGallery from './components/LicenseGallery'
 
 const normalizePhone = (v: string) => v.replace(/\D/g, '').slice(0, 12)
 
@@ -192,27 +193,8 @@ export default function Page() {
       </section>
 
 {/* Licenses / gallery new */}
-<section className="mx-auto max-w-6xl px-4 py-14">
-  <h2 className="text-2xl md:text-3xl font-semibold">Litsenziya va sertifikatlar</h2>
-  <div className="mt-6 grid grid-cols-2 md:grid-cols-3 gap-4">
-    {['/l1.webp','/l2.webp','/l3.webp','/acc.webp'].map((src) => (
-      <div
-        key={src}
-        className="relative aspect-[4/3] rounded-2xl overflow-hidden border bg-white"
-      >
-        {/* object-cover o'rniga object-contain + ozgina padding */}
-        <Image
-          src={src}
-          alt="Litsenziya yoki sertifikat"
-          fill
-          className="object-contain p-2"
-          sizes="(min-width: 768px) 33vw, 50vw"
-          priority={false}
-        />
-      </div>
-    ))}
-  </div>
-</section>
+
+<LicenseGallery />
 
 
       {/* FAQ */}
