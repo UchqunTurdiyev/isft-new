@@ -56,7 +56,7 @@ export default function Page() {
             <a href="#faq" className="hover:text-zinc-900">Savollar</a>
             <a href="#contact" className="hover:text-zinc-900">Aloqa</a>
           </nav>
-          <a href="#lead" className="rounded-xl bg-zinc-900 px-4 py-2 text-white text-sm">Ariza</a>
+          <a href="#lead" className="rounded-xl bg-green-500 px-4 py-2 text-white text-sm">Ariza</a>
         </div>
       </header>
 
@@ -73,13 +73,13 @@ export default function Page() {
               Xalqaro akkreditatsiya (ECAQA), 70+ davlatda tan olinadigan diplom va kuchli amaliyotlar. Qabul ochiq — 1 daqiqada ariza qoldiring.
             </p>
             <div className="mt-6 flex items-center gap-3">
-              <a href="#lead" className="rounded-xl bg-zinc-900 px-5 py-3 text-white">Ariza topshirish</a>
+              <a href="#lead" className="rounded-xl bg-green-500 px-5 py-3 text-white">Ariza topshirish</a>
               <a href="#about" className="rounded-xl border border-zinc-300 px-5 py-3">Batafsil</a>
             </div>
             <div className="mt-6 grid grid-cols-3 gap-4 text-center">
-              <div className="rounded-2xl border p-4"><div className="text-2xl font-semibold">70+</div><div className="text-xs text-zinc-500">Davlatda tan olinadi</div></div>
+              <div className="rounded-2xl bg-amber-100 border p-4"><div className="text-2xl font-semibold">70+</div><div className="text-xs text-zinc-500">Davlatda tan olinadi</div></div>
               <div className="rounded-2xl border p-4"><div className="text-2xl font-semibold">3 til</div><div className="text-xs text-zinc-500">UZ / RU / EN</div></div>
-              <div className="rounded-2xl border p-4"><div className="text-2xl font-semibold">2+2</div><div className="text-xs text-zinc-500">Songwon Univ. hamkorlik</div></div>
+              <div className="rounded-2xl bg-amber-100 border p-4"><div className="text-2xl font-semibold">2+2</div><div className="text-xs text-zinc-500">Songwon Univ. hamkorlik</div></div>
             </div>
           </div>
           <div className="relative aspect-[4/3] md:aspect-[5/4] rounded-3xl overflow-hidden shadow-sm border">
@@ -251,7 +251,7 @@ export default function Page() {
       </footer>
 
       {/* Floating CTA on mobile */}
-      <a href="#lead" className="fixed bottom-5 right-5 md:hidden rounded-full shadow-lg bg-zinc-900 text-white px-5 py-3">Ariza</a>
+      <a href="#lead" className="fixed bottom-5 right-5 md:hidden rounded-full shadow-lg bg-green-500 text-white px-5 py-3">Ariza</a>
     </main>
   )
 }
