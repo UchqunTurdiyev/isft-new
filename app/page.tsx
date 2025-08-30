@@ -65,8 +65,10 @@ export default function Page() {
         <div className="mx-auto max-w-6xl px-4 py-14 md:py-20 grid md:grid-cols-2 gap-10 items-center">
           <div>
             <h1 className="text-3xl md:text-5xl font-bold leading-tight tracking-tight">
-            70+ davlatda tan olinadigan diplom. O‘zbekistonda ham, chet elda ham tan olinadigan ta’lim
+            O‘zbekistonda ham, chet elda ham 100% tan olinadigan diplom
             </h1>
+            <p className='text-orange-600 py-2 text-base md:text-lg'>Kunduzgi & Masofaviy ta'lim. </p>
+            <p className='text-zinc-600 text-base md:text-lg'>Diplom — har ikkisi uchun bir xil kuchga ega </p>
             <p className="mt-4 text-zinc-600 text-base md:text-lg">
               Xalqaro akkreditatsiya (ECAQA), 70+ davlatda tan olinadigan diplom va kuchli amaliyotlar. Qabul ochiq — 1 daqiqada ariza qoldiring.
             </p>
