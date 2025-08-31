@@ -65,7 +65,7 @@ export default function Page() {
         <div className="mx-auto max-w-6xl px-4 py-14 md:py-20 grid md:grid-cols-2 gap-10 items-center">
           <div>
             <h1 className="text-3xl md:text-5xl font-bold leading-tight tracking-tight">
-            O‘zbekistonda ham, chet elda ham 100% tan olinadigan diplom
+            Tanlov aniq: xalqaro akkreditatsiyaga ega ISFT. Xalqaro darajali institut
             </h1>
             <p className='text-orange-600 py-2 text-base md:text-lg'>Kunduzgi & Masofaviy ta'lim. </p>
             <p className='text-zinc-600 text-base md:text-lg'>Diplom — har ikkisi uchun bir xil kuchga ega </p>
