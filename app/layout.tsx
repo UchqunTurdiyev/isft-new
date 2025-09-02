@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import './globals.css';
-
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 
 export const metadata: Metadata = {
@@ -49,7 +49,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           </noscript>
           {/* ✅ End Meta Pixel Code */}
         </head>
-      <body className="bg-white text-zinc-900 antialiased">{children}</body>
+      <body className="bg-white text-zinc-900 antialiased">{children}
+      <SpeedInsights />
+      </body>
     </html>
   )
 }
